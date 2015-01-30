@@ -1,0 +1,21 @@
+{
+	"name": "leaflet.pattern",
+	"version": "0.1.0",
+	"description": "Provides the ability to use SVG patterns as backgrounds for Leaflet Paths.",
+	"dependencies": {
+		"leaflet": "~0.7.1"
+	},
+	"devDependencies": {
+		"jshint": "~2.1.3",
+		"mocha": "~1.10.0",
+		"karma": "~0.8.5",
+		"uglify-js": "~2.3.6",
+		"jake": "~0.5.16"
+	},
+	"main": "dist/leaflet.pattern.js",
+	"scripts": {
+		"test": "jake test",
+		"prepublish": "jake"
+	},
+	"keywords": ["gis", "map"]
+}

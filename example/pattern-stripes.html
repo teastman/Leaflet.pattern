@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="spire">
+<head>
+    <meta charset="utf-8">
+    <title>Leaflet</title>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="../dist/leaflet.pattern-src.js"></script>
+    <style>
+        html, body, #map {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script type="text/javascript">
+        var mapCenter = new L.LatLng(50.68, -120.34);
+
+        var baseLayer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        });
+
+        var _map = new L.Map("map", {
+            center: mapCenter,
+            zoom: 14,
+            layers: [baseLayer]
+        });
+
+        // Default Stripes.
+        var stripes = new L.StripePattern();
+        stripes.addTo(_map);
+
+        var circle = new L.Circle(mapCenter, 400.0, {
+            fillPattern: stripes,
+            stroke: false,
+            fillOpacity: 0.5
+        });
+        circle.addTo(_map);
+
+        // Custom Stripes.
+        var bigStripes = new L.StripePattern({
+            patternContentUnits: 'objectBoundingBox',
+            patternUnits: 'objectBoundingBox',
+            weight: 0.1,
+            spaceWeight: 0.1,
+            height: 0.2,
+            angle: 45
+        });
+        bigStripes.addTo(_map);
+
+        circle = new L.Circle(new L.LatLng(mapCenter.lat, mapCenter.lng + 0.02), 400.0, {
+            fillPattern: bigStripes,
+            stroke: false,
+            fillOpacity: 0.5});
+        circle.addTo(_map);
+    </script>
+</body>
+</html>
