@@ -53,7 +53,12 @@ L.PatternShape = L.Class.extend({
 			this._updateStyle();
 		}
 		return this;
-	}
+	},
+
+	setShape: function (shape) {
+        this.options = L.extend({}, this.options, shape);
+		this._updateShape();
+	},
 });
 
 L.Pattern.include({

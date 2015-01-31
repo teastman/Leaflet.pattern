@@ -7,16 +7,12 @@ L.PatternPath = L.PatternShape.extend({
 		// d: <svg path code>
 //	},
 
-	setShape: function (shape) {
-		this.options.d = shape.d;
-		this._updateShape();
-	},
-
 	_initDom: function () {
 		this._initDomElement('path');
 	},
 
 	_updateShape: function () {
+        if (!this._dom) { return; }
 		this._dom.setAttribute('d', this.options.d);
 	}
 });

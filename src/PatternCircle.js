@@ -9,18 +9,12 @@ L.PatternCircle = L.PatternShape.extend({
 		// radius: radius
 //	},
 
-	setShape: function (shape) {
-		this.options.x = shape.x;
-		this.options.y = shape.y;
-		this.options.radius = shape.radius;
-		this._updateShape();
-	},
-
 	_initDom: function () {
 		this._initDomElement('circle');
 	},
 
 	_updateShape: function () {
+        if (!this._dom) { return; }
 		this._dom.setAttribute('cx', this.options.x);
 		this._dom.setAttribute('cy', this.options.y);
 		this._dom.setAttribute('r', this.options.radius);

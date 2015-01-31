@@ -317,7 +317,12 @@ L.PatternShape = L.Class.extend({
 			this._updateStyle();
 		}
 		return this;
-	}
+	},
+
+	setShape: function (shape) {
+        this.options = L.extend({}, this.options, shape);
+		this._updateShape();
+	},
 });
 
 L.Pattern.include({
@@ -409,16 +414,12 @@ L.PatternPath = L.PatternShape.extend({
 		// d: <svg path code>
 //	},
 
-	setShape: function (shape) {
-		this.options.d = shape.d;
-		this._updateShape();
-	},
-
 	_initDom: function () {
 		this._initDomElement('path');
 	},
 
 	_updateShape: function () {
+        if (!this._dom) { return; }
 		this._dom.setAttribute('d', this.options.d);
 	}
 });
@@ -434,18 +435,12 @@ L.PatternCircle = L.PatternShape.extend({
 		// radius: radius
 //	},
 
-	setShape: function (shape) {
-		this.options.x = shape.x;
-		this.options.y = shape.y;
-		this.options.radius = shape.radius;
-		this._updateShape();
-	},
-
 	_initDom: function () {
 		this._initDomElement('circle');
 	},
 
 	_updateShape: function () {
+        if (!this._dom) { return; }
 		this._dom.setAttribute('cx', this.options.x);
 		this._dom.setAttribute('cy', this.options.y);
 		this._dom.setAttribute('r', this.options.radius);
