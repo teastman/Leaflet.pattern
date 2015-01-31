@@ -33,20 +33,17 @@
 
     var trianglePath = new L.PatternPath({
         d: 'M10 0 L7 20 L25 20 Z',
-        color: '#000000',
-        fill: true,
-        fillColor: '#ff0000',
-        fillOpacity: 1.0
+        fill: true
     });
 
     var triangles = new L.Pattern({width:50, height:50});
     triangles.addShape(trianglePath);
     triangles.addTo(_map);
 
-    var circle3 = new L.Circle(mapCenter, 400.0, {
+    var circle = new L.Circle(mapCenter, 400.0, {
         fillPattern: triangles,
         fillOpacity: 1.0});
-    circle3.addTo(_map);
+    circle.addTo(_map);
 </script>
 </body>
 </html>
