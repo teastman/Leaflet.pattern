@@ -93,7 +93,7 @@ All shapes have the following options.
 ### Path
 
 <code>
-    var trianglePath = new L.PatternPath({
+    var shape = new L.PatternPath({
         d: 'M10 0 L7 20 L25 20 Z',
         fill: true
     });
@@ -105,7 +105,7 @@ All shapes have the following options.
 ### Circle
 
 <code>
-    var circleShape = new L.PatternCircle({
+    var shape = new L.PatternCircle({
         x: 12,
         y: 12,
         radius: 10,
@@ -114,25 +114,25 @@ All shapes have the following options.
 </code>
 
 **Options**
-* **x**: {number} (default: null) - x offset of the circle.
-* **y**: {number} (default: null) - y offset of the circle.
-* **radius**: {number} (default: null) - radius of the circle.
+* **x**: {number} (default: 0) - x offset of the circle.
+* **y**: {number} (default: 0) - y offset of the circle.
+* **radius**: {number} (default: 0) - radius of the circle.
 
 ## Usage
 
 Once the paths are defined you can use them by adding them to a Pattern.
 
 <code>
-var trianglePattern = new L.Pattern({options});
-trianglePattern.addShape(trianglePath);
-trianglePattern.addTo(map);
+var pattern = new L.Pattern({options});
+pattern.addShape(shape);
+pattern.addTo(map);
 </code>
 
 Finally you can now use the pattern in the fill pattern property of any Path in leaflet.
 
 <code>
  var circle = new L.Circle({LatLng}, {radius}, {
-    fillPattern: trianglePattern,
+    fillPattern: pattern,
     fillOpacity: 1.0});
 circle.addTo(_map);
 </code>

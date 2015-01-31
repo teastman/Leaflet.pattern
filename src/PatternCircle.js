@@ -3,11 +3,11 @@
  */
 
 L.PatternCircle = L.PatternShape.extend({
-//	options: {
-		// x: center x coordinate
-		// y: center y coordinate
-		// radius: radius
-//	},
+	options: {
+        x: 0,
+        y: 0,
+        radius: 0
+	},
 
 	_initDom: function () {
 		this._initDomElement('circle');
