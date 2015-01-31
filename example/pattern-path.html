@@ -31,17 +31,17 @@
         layers: [baseLayer]
     });
 
-    var trianglePath = new L.PatternPath({
+    var shape = new L.PatternPath({
         d: 'M10 0 L7 20 L25 20 Z',
         fill: true
     });
 
-    var triangles = new L.Pattern({width:50, height:50});
-    triangles.addShape(trianglePath);
-    triangles.addTo(_map);
+    var pattern = new L.Pattern({width:50, height:50});
+    pattern.addShape(shape);
+    pattern.addTo(_map);
 
     var circle = new L.Circle(mapCenter, 400.0, {
-        fillPattern: triangles,
+        fillPattern: pattern,
         fillOpacity: 1.0});
     circle.addTo(_map);
 </script>

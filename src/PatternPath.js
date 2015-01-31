@@ -8,7 +8,7 @@ L.PatternPath = L.PatternShape.extend({
 //	},
 
 	setShape: function (shape) {
-		this.options.d = shape;
+		this.options.d = shape.d;
 		this._updateShape();
 	},
 

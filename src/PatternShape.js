@@ -19,9 +19,6 @@ L.PatternShape = L.Class.extend({
 		fillOpacity: 0.2,
 		fillRule: 'evenodd',
 		// fillPattern: L.Pattern
-
-		// className: ''
-		interactive: true
 	},
 
 	initialize: function (options) {

@@ -59,16 +59,18 @@ stipes.addTo(map);
 Once the pre-built patterns are defined you can use them by adding them as the fill pattern property of any Path in leaflet.
 
 <code>
- var circle3 = new L.Circle({LatLng}, {radius}, {
+ var circle = new L.Circle({LatLng}, {radius}, {
     fillPattern: stripes,
     fillOpacity: 1.0});
-circle3.addTo(_map);
+circle.addTo(_map);
 </code>
 
 Custom Patterns
 ---------------
 
 To create custom patterns you must first create some shapes to define what the pattern looks like.
+
+### Shapes
 
 **Options**
 
@@ -129,8 +131,8 @@ trianglePattern.addTo(map);
 Finally you can now use the pattern in the fill pattern property of any Path in leaflet.
 
 <code>
- var circle3 = new L.Circle({LatLng}, {radius}, {
+ var circle = new L.Circle({LatLng}, {radius}, {
     fillPattern: trianglePattern,
     fillOpacity: 1.0});
-circle3.addTo(_map);
+circle.addTo(_map);
 </code>

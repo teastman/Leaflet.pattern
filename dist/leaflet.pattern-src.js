@@ -283,9 +283,6 @@ L.PatternShape = L.Class.extend({
 		fillOpacity: 0.2,
 		fillRule: 'evenodd',
 		// fillPattern: L.Pattern
-
-		// className: ''
-		interactive: true
 	},
 
 	initialize: function (options) {
@@ -413,7 +410,7 @@ L.PatternPath = L.PatternShape.extend({
 //	},
 
 	setShape: function (shape) {
-		this.options.d = shape;
+		this.options.d = shape.d;
 		this._updateShape();
 	},
 
