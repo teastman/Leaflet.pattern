@@ -11,7 +11,8 @@ var deps = {
 		src: ['PatternShape.js',
 		      'PatternShape.SVG.js',
 		      'PatternPath.js',
-              'PatternCircle.js'],
+              'PatternCircle.js',
+              'PatternRect.js'],
 		desc: 'Shapes for use in patterns.'
 	}
 };

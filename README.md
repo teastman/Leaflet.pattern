@@ -118,6 +118,28 @@ All shapes have the following options.
 * **y**: {number} (default: 0) - y offset of the circle.
 * **radius**: {number} (default: 0) - radius of the circle.
 
+### Rectangle
+
+<code>
+    var shape = new L.PatternRect({
+        x: 5,
+        y: 5,
+        width: 40,
+        height: 40,
+        rx: 10,
+        ry: 10,
+        fill: true
+    });
+</code>
+
+**Options**
+* **x**: {number} (default: 0) - x offset of the rectangle.
+* **y**: {number} (default: 0) - y offset of the rectangle.
+* **width**: {number} (default: 10) - width of the rectangle.
+* **height**: {number} (default: 10) - height of the rectangle.
+* **rx**: {number} (default: null) - x radius for rounded corners
+* **ry**: {number} (default: null) - y radius for rounded corners
+
 ## Usage
 
 Once the paths are defined you can use them by adding them to a Pattern.
