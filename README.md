@@ -100,6 +100,22 @@ All shapes have the following options.
 **Options**
 * **d**: {path} (default: null) - The SVG path definition.
 
+### Circle
+
+<code>
+    var circleShape = new L.PatternCircle({
+        x: 12,
+        y: 12,
+        radius: 10,
+        fill: true
+    });
+</code>
+
+**Options**
+* **x**: {number} (default: null) - x offset of the circle.
+* **y**: {number} (default: null) - y offset of the circle.
+* **radius**: {number} (default: null) - radius of the circle.
+
 ## Usage
 
 Once the paths are defined you can use them by adding them to a Pattern.
