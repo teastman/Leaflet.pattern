@@ -42,7 +42,7 @@ Pre-Built patterns are just an easier way to use some common patterns.  Pre-Buil
 
 <code>
 var stripes = new L.StripePattern({options});
-stipes.addTo(map);
+stripes.addTo(map);
 </code>
 
 **Options**
