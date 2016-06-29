@@ -53,24 +53,45 @@ L.Pattern = L.Pattern.extend({
 
 L.Map.include({
 	_initDefRoot: function () {
-		if (!this._pathRoot) {
-			this._initPathRoot();
-		}
-		if (!this._defRoot) {
-			this._defRoot = L.Pattern.prototype._createElement('defs');
-			this._pathRoot.appendChild(this._defRoot);
-		}
-	}
+        if (!this._defRoot) {
+            if (typeof this.getRenderer === 'function') {
+                var renderer = this.getRenderer(this);
+                this._defRoot = L.Pattern.prototype._createElement('defs');
+                renderer._container.appendChild(this._defRoot);
+            } else {
+                if (!this._pathRoot) {
+                    this._initPathRoot();
+                }
+                this._defRoot = L.Pattern.prototype._createElement('defs');
+                this._pathRoot.appendChild(this._defRoot);
+            }
+        }
+    }
 });
 
-L.Path.include({
-	_superUpdateStyle: L.Path.prototype._updateStyle,
+if (L.SVG) {
+    L.SVG.include({
+        _superUpdateStyle: L.SVG.prototype._updateStyle,
 
-	_updateStyle: function () {
-		this._superUpdateStyle();
+        _updateStyle: function (layer) {
+            this._superUpdateStyle(layer);
 
-		if (this.options.fill && this.options.fillPattern) {
-			this._path.setAttribute('fill', 'url(#' + L.stamp(this.options.fillPattern) + ")");
-		}
-	}
-});
+            if (layer.options.fill && layer.options.fillPattern) {
+                layer._path.setAttribute('fill', 'url(#' + L.stamp(layer.options.fillPattern) + ")");
+            }
+        }
+    });
+}
+else {
+    L.Path.include({
+        _superUpdateStyle: L.Path.prototype._updateStyle,
+
+        _updateStyle: function () {
+            this._superUpdateStyle();
+
+            if (this.options.fill && this.options.fillPattern) {
+                this._path.setAttribute('fill', 'url(#' + L.stamp(this.options.fillPattern) + ")");
+            }
+        }
+    });
+}

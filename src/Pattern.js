@@ -25,8 +25,8 @@ L.Pattern = L.Class.extend({
 	},
 
 	onAdd: function (map) {
-		this._map = map;
-		map._initDefRoot();
+        this._map = map.target ? map.target : map;
+        this._map._initDefRoot();
 
 		// Create the DOM Object for the pattern.
 		this._initDom();
@@ -44,10 +44,10 @@ L.Pattern = L.Class.extend({
 		this.redraw();
 
 		if (this.getEvents) {
-			map.on(this.getEvents(), this);
+            this._map.on(this.getEvents(), this);
 		}
 		this.fire('add');
-		map.fire('patternadd', {pattern: this});
+        this._map.fire('patternadd', {pattern: this});
 	},
 
 	onRemove: function () {

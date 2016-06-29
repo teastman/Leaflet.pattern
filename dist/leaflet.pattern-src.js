@@ -30,8 +30,8 @@ L.Pattern = L.Class.extend({
 	},
 
 	onAdd: function (map) {
-		this._map = map;
-		map._initDefRoot();
+        this._map = map.target ? map.target : map;
+        this._map._initDefRoot();
 
 		// Create the DOM Object for the pattern.
 		this._initDom();
@@ -49,10 +49,10 @@ L.Pattern = L.Class.extend({
 		this.redraw();
 
 		if (this.getEvents) {
-			map.on(this.getEvents(), this);
+            this._map.on(this.getEvents(), this);
 		}
 		this.fire('add');
-		map.fire('patternadd', {pattern: this});
+        this._map.fire('patternadd', {pattern: this});
 	},
 
 	onRemove: function () {
@@ -138,6 +138,7 @@ L.Map.include({
 });
 
 
+
 L.Pattern.SVG_NS = 'http://www.w3.org/2000/svg';
 
 L.Pattern = L.Pattern.extend({
@@ -192,27 +193,49 @@ L.Pattern = L.Pattern.extend({
 
 L.Map.include({
 	_initDefRoot: function () {
-		if (!this._pathRoot) {
-			this._initPathRoot();
-		}
-		if (!this._defRoot) {
-			this._defRoot = L.Pattern.prototype._createElement('defs');
-			this._pathRoot.appendChild(this._defRoot);
-		}
-	}
+        if (!this._defRoot) {
+            if (typeof this.getRenderer === 'function') {
+                var renderer = this.getRenderer(this);
+                this._defRoot = L.Pattern.prototype._createElement('defs');
+                renderer._container.appendChild(this._defRoot);
+            } else {
+                if (!this._pathRoot) {
+                    this._initPathRoot();
+                }
+                this._defRoot = L.Pattern.prototype._createElement('defs');
+                this._pathRoot.appendChild(this._defRoot);
+            }
+        }
+    }
 });
 
-L.Path.include({
-	_superUpdateStyle: L.Path.prototype._updateStyle,
+if (L.SVG) {
+    L.SVG.include({
+        _superUpdateStyle: L.SVG.prototype._updateStyle,
 
-	_updateStyle: function () {
-		this._superUpdateStyle();
+        _updateStyle: function (layer) {
+            this._superUpdateStyle(layer);
 
-		if (this.options.fill && this.options.fillPattern) {
-			this._path.setAttribute('fill', 'url(#' + L.stamp(this.options.fillPattern) + ")");
-		}
-	}
-});
+            if (layer.options.fill && layer.options.fillPattern) {
+                layer._path.setAttribute('fill', 'url(#' + L.stamp(layer.options.fillPattern) + ")");
+            }
+        }
+    });
+}
+else {
+    L.Path.include({
+        _superUpdateStyle: L.Path.prototype._updateStyle,
+
+        _updateStyle: function () {
+            this._superUpdateStyle();
+
+            if (this.options.fill && this.options.fillPattern) {
+                this._path.setAttribute('fill', 'url(#' + L.stamp(this.options.fillPattern) + ")");
+            }
+        }
+    });
+}
+
 
 /*
  * L.StripePattern is an implementation of Pattern that creates stripes.
