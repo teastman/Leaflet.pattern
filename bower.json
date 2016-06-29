@@ -1,0 +1,14 @@
+{
+  "name": "Leaflet.pattern",
+  "version": "0.0.0",
+  "homepage": "https://github.com/teastman/Leaflet.pattern",
+  "authors": [
+    "teastman"
+  ],
+  "description": "Plugin for leaflet that allows for use of fill patterns in Paths",
+  "main": "dist/leaflet.pattern.js",
+  "keywords": [
+    "leaflet"
+  ],
+  "license": "MIT"
+}
