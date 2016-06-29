@@ -9,6 +9,11 @@ Provides the ability to use SVG patterns as backgrounds for [Leaflet](http://lea
 Usage Examples
 ==============
 
+* [Circle Pattern](https://teastman.github.io/Leaflet.pattern/pattern-circle.html)
+* [Rectangular Pattern](https://teastman.github.io/Leaflet.pattern/pattern-rect.html)
+* [Stripe Pattern](https://teastman.github.io/Leaflet.pattern/pattern-stripes.html)
+* [Path Pattern](https://teastman.github.io/Leaflet.pattern/pattern-path.html)
+
 You can define a pattern in 2 ways.
 1. Using a pre-defined provided pattern.
 2. Creating a custom pattern.
