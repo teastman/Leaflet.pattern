@@ -140,8 +140,7 @@ exports.build = function (compsBase32, buildName) {
 	var path = pathPart + '.js',
 	    oldCompressed = loadSilently(path),
 	    newCompressed = copy + UglifyJS.minify(newSrc, {
-	        warnings: true,
-	        fromString: true
+	        warnings: true
 	    }).code,
 	    delta = getSizeDelta(newCompressed, oldCompressed);
 
