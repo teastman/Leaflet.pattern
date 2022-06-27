@@ -8,7 +8,8 @@
  */
 
 L.Pattern = L.Class.extend({
-	includes: [L.Mixin.Events],
+	// L.Mixin.Events is deprecated
+	includes: [L.Evented.prototype || L.Mixin.Events],
 
 	options: {
 		x: 0,
